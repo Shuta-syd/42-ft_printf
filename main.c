@@ -1,18 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 15:07:10 by shogura           #+#    #+#             */
-/*   Updated: 2022/04/22 21:40:45 by shogura          ###   ########.fr       */
+/*   Created: 2022/04/22 21:40:38 by shogura           #+#    #+#             */
+/*   Updated: 2022/04/22 22:13:30 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "include/ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+void	test_va_arg(char *str, ...)
 {
-	return (0);
+	va_list test;
+	size_t	sum;
+	size_t	len;
+
+	sum = 0;
+	len = 0;
+	va_start(test, str);
+	len = strlen(str);
+	for (int i = 0; i < len; i++)
+		sum += va_arg(test, size_t);
+	va_end(test);
+}
+
+int main(void)
+{
+	char *str = "shuta ogura hello world!";
+	test_va_arg(str);
+	return 0;
 }
