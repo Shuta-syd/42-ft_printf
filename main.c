@@ -6,30 +6,38 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 21:40:38 by shogura           #+#    #+#             */
-/*   Updated: 2022/04/22 22:13:30 by shogura          ###   ########.fr       */
+/*   Updated: 2022/04/28 19:42:43 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/ft_printf.h"
 
-void	test_va_arg(char *str, ...)
-{
-	va_list test;
-	size_t	sum;
-	size_t	len;
+//void	test_va_arg(char *arg, ...)
+//{
+//	va_list	ap;
 
-	sum = 0;
-	len = 0;
-	va_start(test, str);
-	len = strlen(str);
-	for (int i = 0; i < len; i++)
-		sum += va_arg(test, size_t);
-	va_end(test);
-}
+//	va_start(ap, arg);
+//	printf("%s\n", arg);
+//	printf("%s\n", va_arg(ap, char *));
+//	printf("%d\n", va_arg(ap, int));
+//	printf("%c\n", va_arg(ap, int));
+//	va_end(ap);
+//}
+
+//int main(void)
+//{
+//	char	*ap1 = "shuta ogura hello world!";
+//	char	*ap2 = "this is va_arg";
+//	int		ap3 = 42;
+//	char	ap4 = 'a';
+//	test_va_arg(ap1, ap2, ap3, ap4);
+//	return 0;
+//}
+
 
 int main(void)
 {
-	char *str = "shuta ogura hello world!";
-	test_va_arg(str);
+	char num = 10;
+	printf("%#p", &num);
 	return 0;
 }
