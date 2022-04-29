@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:24:50 by shogura           #+#    #+#             */
-/*   Updated: 2022/04/28 21:05:23 by shogura          ###   ########.fr       */
+/*   Updated: 2022/04/29 13:02:13 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,4 @@ void ft_putnbr_base(size_t n, int base, char *base_s)
 	else if (0 <= n && n <= 9)
 		ft_putchar(base_s[n]);
 	return;
-}
-
-int main(void)
-{
-	ft_putnbr_base(LONg, 16, "0123456789ABCDEF");
-	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 15:07:10 by shogura           #+#    #+#             */
-/*   Updated: 2022/04/28 19:56:45 by shogura          ###   ########.fr       */
+/*   Updated: 2022/04/29 14:34:50 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_status(t_status **status)
 {
-	(*status)->flags = 0;
+	(*status)->flags = ' ';
 	(*status)->width = 0;
 	(*status)->precision = 0;
 	(*status)->error = 0;
