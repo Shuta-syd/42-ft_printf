@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 21:40:38 by shogura           #+#    #+#             */
-/*   Updated: 2022/04/29 14:33:15 by shogura          ###   ########.fr       */
+/*   Updated: 2022/04/29 20:23:21 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 int main(void)
 {
 	char num = 's';
-	printf("%0100d\n", INT_MAX);
-	ft_printf("%0100d", INT_MAX);
+	ft_printf("%ragra0#20 %d %d", 100, 100);
+	printf("\n%ragra0#20 %d %d", 100, 100);
 	return 0;
 }
