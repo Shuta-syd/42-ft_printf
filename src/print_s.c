@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:45:24 by shogura           #+#    #+#             */
-/*   Updated: 2022/04/29 18:32:28 by shogura          ###   ########.fr       */
+/*   Updated: 2022/04/30 15:01:11 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,17 @@ void print_s(t_status *status, va_list *ap)
 	if (status->zero)
 		pd = '0';
 	str = va_arg(*ap, char *);
-	width = status->width - ft_strlen(str);
+	if (status->precision)
+		width = status->width - status->precision;
+	else
+		width = status->width - ft_strlen(str);
 	if (status->minus)
 	{
 		pd = ' ';
-		ft_putstr(str);
+		if (status->precision)
+			ft_putnstr(str, status->precision);
+		else
+			ft_putstr(str);
 		while (width-- > 0)
 			ft_putchar(pd);
 	}
@@ -34,7 +40,10 @@ void print_s(t_status *status, va_list *ap)
 	{
 		while (width-- > 0)
 			ft_putchar(pd);
-		ft_putstr(str);
+		if (status->precision)
+			ft_putnstr(str, status->precision);
+		else
+			ft_putstr(str);
 	}
 }
 // NULLの処理→(null)

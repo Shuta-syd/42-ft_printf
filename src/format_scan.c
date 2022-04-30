@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:56:37 by shogura           #+#    #+#             */
-/*   Updated: 2022/04/29 20:23:13 by shogura          ###   ########.fr       */
+/*   Updated: 2022/04/30 15:42:11 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void scan_precision(char const **format, t_status **status)
 	{
 		(*format)++;
 		if ('0' <= **format && **format <= '9')
-			(*status)->width = ft_atoi(*format);
+			(*status)->precision = ft_atoi(*format);
 		while ('0' <= **format && **format <= '9')
 			(*format)++;
 	}
@@ -58,7 +58,7 @@ void	output_status(t_status *status)
 	printf("zero -> %d\n", status->zero);
 	printf("space -> %d\n", status->space);
 	printf("width -> %d\n", status->width);
-	printf("precision -> %zu\n", status->precision);
+	printf("precision -> %d\n", status->precision);
 	printf("error -> %zu\n", status->error);
 }
 
@@ -88,7 +88,8 @@ int	scan_error(const char *format)
 	if (!(*format == '#' || *format == '+' || *format == '-' || *format == ' ' ||
 				*format == '0' || *format == 'i' || *format == 'd' || *format == 'c' ||
 				*format == 's' || *format == 'u' || *format == 'x' || *format == 'X' ||
-				*format == 'p' || *format == '%') && !('0' <= *format && *format <= '9'))
+				*format == 'p' || *format == '%' || *format == '.')
+				&& !('0' <= *format && *format <= '9'))
 	{
 		return (1);
 	}
@@ -112,9 +113,9 @@ int scan_format(const char **format, t_status **status, va_list *ap)
 		scan_width(format, status);
 		//  check precision
 		scan_precision(format, status);
+		// output_status(*status);
 		// check types and output args
 		scan_types(format, *status, ap);
-		// output_status(*status);
 		return (0);
 	}
 	return (1);

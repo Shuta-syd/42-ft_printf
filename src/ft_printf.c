@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 15:07:10 by shogura           #+#    #+#             */
-/*   Updated: 2022/04/29 20:21:58 by shogura          ###   ########.fr       */
+/*   Updated: 2022/04/30 14:09:38 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ int	ft_printf(const char *format, ...)
 	t_status *status;
 
 	va_start(ap, format);
-	status = malloc(sizeof(t_status));
+	status = (t_status *)malloc(sizeof(t_status));
+	if (status == NULL)
+		return (0);
 	while (*format)
 	{
 		// status initialize

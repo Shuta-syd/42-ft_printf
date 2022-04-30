@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   output.c                                           :+:      :+:    :+:   */
+/*   output_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:24:50 by shogura           #+#    #+#             */
-/*   Updated: 2022/04/29 13:02:13 by shogura          ###   ########.fr       */
+/*   Updated: 2022/04/30 19:00:24 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ void	ft_putstr(char const *s)
 	return;
 }
 
+void	ft_putnstr(char const *s, int n)
+{
+	if (s == NULL)
+		return;
+	while (*s && n--)
+		ft_putchar(*s++);
+	return;
+}
+
 void	ft_putnbr(int n)
 {
 	if (n == -2147483648)
@@ -48,7 +57,7 @@ void	ft_putnbr(int n)
 	return;
 }
 
-void ft_putnbr_base(size_t n, int base, char *base_s)
+void	ft_putnbr_base(size_t n, int base, char *base_s)
 {
 	if (n > base)
 	{
@@ -59,5 +68,5 @@ void ft_putnbr_base(size_t n, int base, char *base_s)
 		ft_putchar(base_s[n]);
 	else if (0 <= n && n <= 9)
 		ft_putchar(base_s[n]);
-	return;
+	return ;
 }

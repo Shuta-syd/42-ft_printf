@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 21:40:38 by shogura           #+#    #+#             */
-/*   Updated: 2022/04/29 20:23:21 by shogura          ###   ########.fr       */
+/*   Updated: 2022/04/30 19:01:12 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@
 int main(void)
 {
 	char num = 's';
-	ft_printf("%ragra0#20 %d %d", 100, 100);
-	printf("\n%ragra0#20 %d %d", 100, 100);
+	// ft_printf("%ragra0#20 %d %d %s", 100, 100, "hello world");
+	// printf("\n%ragra0#20 %d %d %s", 100, 100, "hello world");
+	// printf("%10.20s\n", "hello world");
+	// ft_printf("%10.20s", "hello world");
+	printf("%+020.10d\n", 1000);
+	ft_printf("%+020.10d\n", 1000);
 	return 0;
 }
