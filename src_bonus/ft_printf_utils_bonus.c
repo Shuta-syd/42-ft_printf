@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 17:31:25 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 18:04:18 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/02 18:52:42 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ size_t	ft_strlen(const char *s)
 }
 
 int	get_digits(long num, int base)
+{
+	int digits;
+
+	digits = 1;
+	while (num / base != 0)
+	{
+		num /= base;
+		digits++;
+	}
+	return (digits);
+}
+
+int get_digits_ul(size_t num, int base)
 {
 	int digits;
 

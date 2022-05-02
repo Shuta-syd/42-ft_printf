@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:43:46 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 18:04:36 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/02 19:35:12 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ static void print_no_precision(t_status **status, unsigned int num)
 {
 	if ((*status)->minus)
 	{
-		print_flag_sharp(status, (*status)->sharp, "0X", 0);
+		print_flag_sharp(status, "0X", 0, num);
 		ft_putnbr_base(num, 16, "0123456789ABCDEF");
 		(*status)->ret += ft_putnchar(' ', (*status)->width);
 	}
 	else if ((*status)->zero)
 	{
-		print_flag_sharp(status, (*status)->sharp, "0X", 0);
+		print_flag_sharp(status, "0X", 0, num);
 		(*status)->ret += ft_putnchar('0', (*status)->width);
 		ft_putnbr_base(num, 16, "0123456789ABCDEF");
 	}
 	else
 	{
-		print_flag_sharp(status, (*status)->sharp, "0X", 0);
+		print_flag_sharp(status, "0X", 0, num);
 		(*status)->ret += ft_putnchar(' ', (*status)->width);
 		ft_putnbr_base(num, 16, "0123456789ABCDEF");
 	}
@@ -38,14 +38,14 @@ static void print_is_precision(t_status **status, unsigned int num)
 {
 	if ((*status)->minus)
 	{
-		print_flag_sharp(status, (*status)->sharp, "0X", 0);
+		print_flag_sharp(status, "0X", 0, num);
 		(*status)->ret += ft_putnchar('0', (*status)->precision - get_digits(num, 16));
 		ft_putnbr_base(num, 16, "0123456789ABCDEF");
 		(*status)->ret += ft_putnchar(' ', (*status)->width);
 	}
 	else
 	{
-		if (print_flag_sharp(status, (*status)->sharp, "0X", 1))
+		if (print_flag_sharp(status, "0X", 1, num))
 			(*status)->ret += ft_putnchar(' ', (*status)->width);
 		(*status)->ret += ft_putnchar('0', (*status)->precision - get_digits(num, 16));
 		ft_putnbr_base(num, 16, "0123456789ABCDEF");

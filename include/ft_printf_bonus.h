@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 15:06:56 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 16:44:31 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/02 20:36:34 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,15 @@ typedef struct s_status
 
 size_t	ft_strlen(const char *s);
 int		get_digits(long num, int base);
-int		ft_atoi(const char *str);
+int get_digits_ul(size_t num, int base);
+int ft_atoi(const char *str);
 int		ft_printf(const char *format, ...);
 ssize_t ft_putstr(char const *s);
 ssize_t		ft_putnchar(int ch, int len);
-ssize_t ft_putnstr(char const *s, int n);
+int ft_putnstr(char const *s, int n);
 void	ft_putnbr(int n);
 ssize_t	ft_putchar(char c);
-void	ft_putnbr_base(unsigned long long n, size_t base, char *base_s);
+void	ft_putnbr_base(size_t n, size_t base, char *base_s);
 ssize_t		scan_format(const char **format, t_status **status, va_list *ap);
 ssize_t print_d_i(t_status *status, va_list *ap);
 ssize_t print_u(t_status *status, va_list *ap);
@@ -49,5 +50,5 @@ ssize_t	print_c_per(t_status *status, va_list *ap, char type);
 ssize_t	print_p(t_status *status, va_list *ap);
 ssize_t	print_X(t_status *status, va_list *ap);
 ssize_t	print_x(t_status *status, va_list *ap);
-int print_flag_sharp(t_status **status, int sharp, char *x, int flag);
+int print_flag_sharp(t_status **status, char *x, int flag, unsigned int num);
 #endif

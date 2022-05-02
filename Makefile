@@ -6,7 +6,7 @@
 #    By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 18:43:16 by shogura           #+#    #+#              #
-#    Updated: 2022/05/02 18:03:35 by shogura          ###   ########.fr        #
+#    Updated: 2022/05/02 18:38:34 by shogura          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,9 @@ ${NAME}:${OBJS_M}
 
 xx:${SRCS}
 	${CC} ${CFLAG} $^ main.c
+
+bx:${SRCS_B}
+	${CC} ${CFLAG} $^ main_bonus.c
 
 bonus:${OBJS_B}
 	ar -rc $(NAME) ${OBJS_B}

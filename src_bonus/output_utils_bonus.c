@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:24:50 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 18:04:21 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/02 21:15:25 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,18 @@ ssize_t	ft_putstr(char const *s)
 	return ((ssize_t)len);
 }
 
-ssize_t	ft_putnstr(char const *s, int n)
+int	ft_putnstr(char const *s, int n)
 {
-	ssize_t	ret;
+	int ret;
 
-	ret = (ssize_t)n;
-	if (s == NULL)
+	ret = 0;
+	if (s == NULL || n < 0)
 		return (0);
-	while (*s && n--)
+	while (*s && ret < n)
+	{
+		ret++;
 		ft_putchar(*s++);
+	}
 	return (ret);
 }
 
@@ -66,7 +69,7 @@ void	ft_putnbr(int n)
 	return;
 }
 
-void	ft_putnbr_base(unsigned long long n, size_t base, char *base_s)
+void	ft_putnbr_base(size_t n, size_t base, char *base_s)
 {
 	if (n >= base)
 	{

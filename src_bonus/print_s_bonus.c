@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:45:24 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 18:04:42 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/02 21:15:43 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ ssize_t print_s(t_status *status, va_list *ap)
 		status->ret	+= ft_putstr("(null)");
 		return (status->ret);
 	}
-	if (status->precision && status->width > status->precision)
+	if (status->precision != -1 && (status->precision && status->width > status->precision))
 	{
 		too_large = 0;
 		status->width -= status->precision;
 	}
-	else
+	else if (status->precision != -1)
 		status->width -= ft_strlen(str);
 	if (status->minus)
 	{
-		if (too_large == 0)
+		if (too_large == 0 || status->precision == -1)
 			status->ret += ft_putnstr(str, status->precision);
 		else
 			status->ret += ft_putstr(str);
@@ -42,7 +42,7 @@ ssize_t print_s(t_status *status, va_list *ap)
 	else
 	{
 		status->ret += ft_putnchar(' ', status->width);
-		if (too_large == 0)
+		if (too_large == 0 || status->precision != 0)
 			status->ret += ft_putnstr(str, status->precision);
 		else
 			status->ret += ft_putstr(str);

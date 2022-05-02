@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:56:37 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 18:04:12 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/02 19:49:22 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	scan_precision(char const **format, t_status **status)
 		(*format)++;
 		if ('0' <= **format && **format <= '9')
 			(*status)->precision = ft_atoi(*format);
+		else
+			(*status)->precision = -1;
 		while ('0' <= **format && **format <= '9')
 			(*format)++;
 	}
