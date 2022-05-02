@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_c_per.c                                      :+:      :+:    :+:   */
+/*   print_c_per_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:43:23 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 14:06:52 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/02 18:04:28 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../include/ft_printf_bonus.h"
 
 ssize_t	print_c_per(t_status *status, va_list *ap, char type)
 {

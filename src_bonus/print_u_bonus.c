@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_u.c                                          :+:      :+:    :+:   */
+/*   print_u_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:42:03 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 15:10:54 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/02 18:04:48 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../include/ft_printf_bonus.h"
 
 static void	print_is_precision(t_status **status, unsigned int num)
 {

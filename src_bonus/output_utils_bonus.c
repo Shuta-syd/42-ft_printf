@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   output_utils.c                                     :+:      :+:    :+:   */
+/*   output_utils_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:24:50 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 17:37:07 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/02 18:04:21 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../include/ft_printf_bonus.h"
 
 ssize_t	ft_putchar(char c)
 {
@@ -66,7 +66,7 @@ void	ft_putnbr(int n)
 	return;
 }
 
-void	ft_putnbr_base(size_t n, size_t base, char *base_s)
+void	ft_putnbr_base(unsigned long long n, size_t base, char *base_s)
 {
 	if (n >= base)
 	{

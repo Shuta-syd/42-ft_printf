@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_s.c                                          :+:      :+:    :+:   */
+/*   print_s_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:45:24 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 14:48:34 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/02 18:04:42 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../include/ft_printf_bonus.h"
 
 ssize_t print_s(t_status *status, va_list *ap)
 {

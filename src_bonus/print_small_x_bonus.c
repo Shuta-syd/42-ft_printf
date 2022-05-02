@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_small_x.c                                    :+:      :+:    :+:   */
+/*   print_small_x_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:43:46 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 13:57:18 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/02 18:04:45 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../include/ft_printf_bonus.h"
 
 int	print_flag_sharp(t_status **status, int sharp, char *x, int flag)
 {
