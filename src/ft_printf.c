@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 15:07:10 by shogura           #+#    #+#             */
-/*   Updated: 2022/04/30 14:09:38 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/01 14:49:19 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_status(t_status **status)
 	(*status)->space = 0;
 	(*status)->width = 0;
 	(*status)->precision = 0;
-	(*status)->error = 0;
+	(*status)->ret = 0;
 }
 
 int	ft_printf(const char *format, ...)
@@ -44,6 +44,7 @@ int	ft_printf(const char *format, ...)
 				ft_putchar(*format++);
 		}
 	}
+	// printf("(%lu)", status->ret);
 	free(status);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:56:37 by shogura           #+#    #+#             */
-/*   Updated: 2022/04/30 15:42:11 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/01 14:36:58 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ void	output_status(t_status *status)
 	printf("space -> %d\n", status->space);
 	printf("width -> %d\n", status->width);
 	printf("precision -> %d\n", status->precision);
-	printf("error -> %zu\n", status->error);
+	printf("ret -> %zu\n", status->ret);
 }
 
 void scan_types(char const **format, t_status *status, va_list *ap)
 {
 	if (**format == 'i' || **format == 'd')
-	 print_i_d(status, ap);
+	 print_d_i(status, ap);
 	else if (**format == 'c')
 		print_c_per(status, ap, 'c');
 	else if (**format == 's')
@@ -98,9 +98,6 @@ int	scan_error(const char *format)
 
 int scan_format(const char **format, t_status **status, va_list *ap)
 {
-	size_t i;
-
-	i = 0;
 	if (**format == '%')
 	{
 		(*format)++;
@@ -113,7 +110,6 @@ int scan_format(const char **format, t_status **status, va_list *ap)
 		scan_width(format, status);
 		//  check precision
 		scan_precision(format, status);
-		// output_status(*status);
 		// check types and output args
 		scan_types(format, *status, ap);
 		return (0);

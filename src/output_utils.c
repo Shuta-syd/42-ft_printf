@@ -6,58 +6,67 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:24:50 by shogura           #+#    #+#             */
-/*   Updated: 2022/04/30 19:00:24 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/01 15:34:25 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-void	ft_putchar(char c)
+ssize_t	ft_putchar(char c)
 {
-	write(1, &c, 1);
-	return;
+	return (write(1, &c, 1));
 }
 
-void	ft_putstr(char const *s)
+ssize_t	ft_putnchar(int ch, int  len)
+{
+	ssize_t	tmp;
+
+	tmp = (ssize_t)len;
+	if (len < 0)
+		return (0);
+	while (len--)
+		ft_putchar(ch);
+	return (tmp);
+}
+
+ssize_t	ft_putstr(char const *s)
 {
 	size_t len;
 
 	if (s == NULL)
-		return;
+		return (0);
 	len = ft_strlen(s);
 	write(1, s, len);
-	return;
+	return ((ssize_t)len);
 }
 
-void	ft_putnstr(char const *s, int n)
+ssize_t	ft_putnstr(char const *s, int n)
 {
+	ssize_t	ret;
+
+	ret = (ssize_t)n;
 	if (s == NULL)
-		return;
+		return (0);
 	while (*s && n--)
 		ft_putchar(*s++);
-	return;
+	return (ret);
 }
 
 void	ft_putnbr(int n)
 {
 	if (n == -2147483648)
-		ft_putstr("-2147483648");
+		ft_putstr("2147483648");
 	else if (n > 9)
 	{
 		ft_putnbr(n / 10);
 		ft_putnbr(n % 10);
-	}
-	else if (n < 0)
-	{
-		ft_putchar('-');
-		ft_putnbr(n * -1);
 	}
 	else if (n >= 0)
 		ft_putchar(n + '0');
 	return;
 }
 
-void	ft_putnbr_base(size_t n, int base, char *base_s)
+void	ft_putnbr_base(size_t n, size_t base, char *base_s)
 {
 	if (n > base)
 	{
