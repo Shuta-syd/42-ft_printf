@@ -6,15 +6,15 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:43:46 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 18:58:07 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/03 17:49:47 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf_bonus.h"
 
-ssize_t	print_p(t_status *status, va_list *ap)
+int	print_p(t_status *status, va_list *ap)
 {
-	uintptr_t address;
+	uintptr_t	address;
 
 	address = va_arg(*ap, uintptr_t);
 	status->ret += get_digits_ul(address, 16);
@@ -31,5 +31,5 @@ ssize_t	print_p(t_status *status, va_list *ap)
 		status->ret += ft_putstr("0x");
 		ft_putnbr_base(address, 16, "0123456789abcdef");
 	}
-	return (status->ret);
+	return ((int)status->ret);
 }

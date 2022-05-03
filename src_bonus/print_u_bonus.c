@@ -6,24 +6,24 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:42:03 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 18:04:48 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/03 16:22:27 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf_bonus.h"
 
-static void	print_is_precision(t_status **status, unsigned int num)
+static void	print_is_precision(t_status **status, unsigned int num, int digits)
 {
 	if ((*status)->minus)
 	{
-		(*status)->ret += ft_putnchar('0', (*status)->precision - get_digits(num, 10));
+		(*status)->ret += ft_putnchar('0', (*status)->precision - digits);
 		ft_putnbr_base(num, 10, "0123456789");
 		(*status)->ret += ft_putnchar(' ', (*status)->width);
 	}
 	else
 	{
 		(*status)->ret += ft_putnchar(' ', (*status)->width);
-		(*status)->ret += ft_putnchar('0', (*status)->precision - get_digits(num, 10));
+		(*status)->ret += ft_putnchar('0', (*status)->precision - digits);
 		ft_putnbr_base(num, 10, "0123456789");
 	}
 }
@@ -47,19 +47,21 @@ static void	print_no_precision(t_status **status, unsigned int num)
 	}
 }
 
-ssize_t	print_u(t_status *status, va_list *ap)
+int	print_u(t_status *status, va_list *ap)
 {
+	int				digits;
 	unsigned int	num;
 
 	num = va_arg(*ap, unsigned int);
-	status->ret += get_digits(num, 10);
-	if (get_digits(num, 10) > status->precision)
-		status->width -= get_digits(num, 10);
-	else if (status->precision > get_digits(num, 10))
+	digits = get_digits_ul(num, 10);
+	status->ret += digits;
+	if (digits > status->precision)
+		status->width -= digits;
+	else if (status->precision > digits)
 		status->width -= status->precision;
 	if (status->precision)
-		print_is_precision(&status, num);
+		print_is_precision(&status, num, digits);
 	else
 		print_no_precision(&status, num);
-	return (status->ret);
+	return ((int)status->ret);
 }

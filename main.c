@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 21:40:38 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 18:39:22 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/03 17:53:14 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int main(void)
 	F(" [test] ret->[%d]\n", F("(%s)", "ååååååååååååå"));
 	U(" [user] ret->[%d]\n\n", U("(%s)", "ååååååååååååå"));
 
-	F(" [test] ret->[%d]\n", F("(%s)", NULL));
+	// F(" [test] ret->[%d]\n", F("(%s)", NULL));
 	U(" [user] ret->[%d]\n", U("(%s)", NULL));
 	F("-------------------------------------------------\n");
 	// Mandatory %u
@@ -146,7 +146,7 @@ int main(void)
 	F(" [test] ret->[%d]\n", F("(%p)", ret));
 	U(" [user] ret->[%d]\n", U("(%p)", ret));
 	F("-------------------------------------------------\n");
-	F("%d\n", U("%p ", -ULONG_MAX));
-	F("%d", U("%p ", ULONG_MAX));
+	// F("%d\n", U("%p ", -ULONG_MAX));
+	// F("%d", U("%p ", ULONG_MAX));
 	return 0;
 }

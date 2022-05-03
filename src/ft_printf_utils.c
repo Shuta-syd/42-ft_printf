@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_printf_utils_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 17:31:25 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 17:55:18 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/03 15:32:46 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../include/ft_printf_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -22,9 +22,9 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-int get_digits(long num, int base)
+int	get_digits(long num, int base)
 {
-	int digits;
+	int	digits;
 
 	digits = 1;
 	while (num / base != 0)
@@ -37,7 +37,7 @@ int get_digits(long num, int base)
 
 int	get_digits_ul(size_t num, int base)
 {
-	int digits;
+	int	digits;
 
 	digits = 1;
 	while (num / base != 0)
@@ -48,7 +48,7 @@ int	get_digits_ul(size_t num, int base)
 	return (digits);
 }
 
-static int ft_overflow(int minus)
+static int	ft_overflow(int minus)
 {
 	if (minus > 0)
 		return ((int)LONG_MAX);
@@ -57,8 +57,8 @@ static int ft_overflow(int minus)
 
 int	ft_atoi(const char *str)
 {
-	int		i;
-	int		minus;
+	int			minus;
+	size_t		i;
 	long long	num;
 
 	i = 0;

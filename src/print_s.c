@@ -1,52 +1,66 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_s.c                                          :+:      :+:    :+:   */
+/*   print_s_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/29 17:45:24 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 14:48:34 by shogura          ###   ########.fr       */
+/*   Created: 2022/05/03 16:30:27 by shogura           #+#    #+#             */
+/*   Updated: 2022/05/03 17:49:27 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../include/ft_printf_bonus.h"
 
-ssize_t print_s(t_status *status, va_list *ap)
+static void	print_no_precision(t_status **status, char *str)
 {
-	int	too_large;
+	if ((*status)->minus)
+	{
+		(*status)->ret += ft_putstr(str);
+		(*status)->ret += ft_putnchar(' ', (*status)->width);
+	}
+	else
+	{
+		(*status)->ret += ft_putnchar(' ', (*status)->width);
+		(*status)->ret += ft_putstr(str);
+	}
+}
+
+static void	print_is_precision(t_status **status, char *str)
+{
+	if ((*status)->minus)
+	{
+		(*status)->ret += ft_putnstr(str, (*status)->precision);
+		(*status)->ret += ft_putnchar(' ', (*status)->width);
+	}
+	else
+	{
+		(*status)->ret += ft_putnchar(' ', (*status)->width);
+		(*status)->ret += ft_putnstr(str, (*status)->precision);
+	}
+}
+
+int	print_s(t_status *status, va_list *ap)
+{
+	long	precision;
+	long	len;
 	char	*str;
 
-	too_large = 1;
+	precision = status->precision;
 	str = va_arg(*ap, char *);
 	if (str == NULL)
 	{
-		status->ret	+= ft_putstr("(null)");
-		return (status->ret);
+		status->ret += ft_putstr("(null)");
+		return ((int)status->ret);
 	}
-	if (status->precision && status->width > status->precision)
-	{
-		too_large = 0;
-		status->width -= status->precision;
-	}
+	len = (long)ft_strlen(str);
+	if ((precision > len || precision == 0) && precision != -1)
+		status->width -= len;
+	else if (precision != -1)
+		status->width -= precision;
+	if (precision)
+		print_is_precision(&status, str);
 	else
-		status->width -= ft_strlen(str);
-	if (status->minus)
-	{
-		if (too_large == 0)
-			status->ret += ft_putnstr(str, status->precision);
-		else
-			status->ret += ft_putstr(str);
-		status->ret += ft_putnchar(' ', status->width);
-	}
-	else
-	{
-		status->ret += ft_putnchar(' ', status->width);
-		if (too_large == 0)
-			status->ret += ft_putnstr(str, status->precision);
-		else
-			status->ret += ft_putstr(str);
-	}
-	return (status->ret);
+		print_no_precision(&status, str);
+	return ((int)status->ret);
 }
-// NULLの処理→(null)

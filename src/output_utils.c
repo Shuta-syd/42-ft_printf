@@ -1,54 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   output_utils.c                                     :+:      :+:    :+:   */
+/*   output_utils_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:24:50 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/02 17:37:07 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/03 17:45:49 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../include/ft_printf_bonus.h"
 
-ssize_t	ft_putchar(char c)
+int	ft_putnchar(int ch, int len)
 {
-	return (write(1, &c, 1));
-}
+	int	tmp;
 
-ssize_t	ft_putnchar(int ch, int  len)
-{
-	ssize_t	tmp;
-
-	tmp = (ssize_t)len;
+	tmp = len;
 	if (len < 0)
 		return (0);
 	while (len--)
-		ft_putchar(ch);
+		write(1, &ch, 1);
 	return (tmp);
 }
 
-ssize_t	ft_putstr(char const *s)
+int	ft_putstr(char const *s)
 {
-	size_t len;
+	int	len;
 
 	if (s == NULL)
 		return (0);
 	len = ft_strlen(s);
 	write(1, s, len);
-	return ((ssize_t)len);
+	return (len);
 }
 
-ssize_t	ft_putnstr(char const *s, int n)
+int	ft_putnstr(char const *s, int n)
 {
-	ssize_t	ret;
+	int	ret;
 
-	ret = (ssize_t)n;
-	if (s == NULL)
+	ret = 0;
+	if (s == NULL || n < 0)
 		return (0);
-	while (*s && n--)
-		ft_putchar(*s++);
+	while (*s && ret < n)
+	{
+		ret++;
+		ft_putnchar(*s++, 1);
+	}
 	return (ret);
 }
 
@@ -62,8 +60,8 @@ void	ft_putnbr(int n)
 		ft_putnbr(n % 10);
 	}
 	else if (n >= 0)
-		ft_putchar(n + '0');
-	return;
+		ft_putnchar(n + '0', 1);
+	return ;
 }
 
 void	ft_putnbr_base(size_t n, size_t base, char *base_s)
@@ -71,11 +69,11 @@ void	ft_putnbr_base(size_t n, size_t base, char *base_s)
 	if (n >= base)
 	{
 		ft_putnbr_base(n / base, base, base_s);
-		ft_putchar(base_s[n % base]);
+		ft_putnchar(base_s[n % base], 1);
 	}
 	else if (10 <= n && n <= 15)
-		ft_putchar(base_s[n]);
+		ft_putnchar(base_s[n], 1);
 	else if (0 <= n && n <= 9)
-		ft_putchar(base_s[n]);
+		ft_putnchar(base_s[n], 1);
 	return ;
 }
