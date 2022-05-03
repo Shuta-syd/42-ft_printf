@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:56:37 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/03 17:50:24 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/03 22:03:48 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,36 @@ void	scan_flags(char const **format, t_status **status)
 	}
 }
 
-void	scan_width(char const **format, t_status **status)
+int	scan_width(char const **format, t_status **status, va_list *ap)
 {
 	if ('0' <= **format && **format <= '9')
 		(*status)->width = ft_atoi(*format);
+	else if (**format == '*')
+		(*status)->width = va_arg(*ap, int);
 	while ('0' <= **format && **format <= '9')
 		(*format)++;
+	if ((*status)->width >= INT_MAX)
+		return (-1);
+	return (0);
 }
 
-void	scan_precision(char const **format, t_status **status)
+int	scan_precision(char const **format, t_status **status, va_list *ap)
 {
 	if (**format == '.')
 	{
 		(*format)++;
 		if ('0' <= **format && **format <= '9')
 			(*status)->precision = ft_atoi(*format);
+		else if (**format == '*')
+			(*status)->precision = va_arg(*ap, int);
 		else
 			(*status)->precision = -1;
-		while ('0' <= **format && **format <= '9')
+		while (('0' <= **format && **format <= '9') || **format == '*')
 			(*format)++;
 	}
+	if ((*status)->precision >= INT_MAX && **format != 's')
+		return (-1);
+	return (0);
 }
 
 int	scan_types(char const **format, t_status *status, va_list *ap)
@@ -80,21 +90,28 @@ int	scan_types(char const **format, t_status *status, va_list *ap)
 
 int	scan_format(const char **format, t_status **status, va_list *ap)
 {
+	int	error;
 	int	ret;
 
 	ret = 0;
+	error = 0;
 	if (**format == '%')
 	{
 		(*format)++;
 		scan_flags(format, status);
-		scan_width(format, status);
-		scan_precision(format, status);
-		ret += scan_types(format, *status, ap);
+		error += scan_width(format, status, ap);
+		error += scan_precision(format, status, ap);
+		if (error != -1 && error != -2)
+		{
+			ret += scan_types(format, *status, ap);
+			return (ret);
+		}
 	}
 	else
 	{
 		while (**format != '%' && **format)
 			ret += ft_putnchar(*(*format)++, 1);
+		return (ret);
 	}
-	return (ret);
+	return (error);
 }

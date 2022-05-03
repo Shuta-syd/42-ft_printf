@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:30:27 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/03 17:49:27 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/03 21:36:53 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	print_s(t_status *status, va_list *ap)
 		return ((int)status->ret);
 	}
 	len = (long)ft_strlen(str);
+	if (len >= INT_MAX)
+		return (-1);
 	if ((precision > len || precision == 0) && precision != -1)
 		status->width -= len;
 	else if (precision != -1)

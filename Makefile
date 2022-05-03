@@ -6,7 +6,7 @@
 #    By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 18:43:16 by shogura           #+#    #+#              #
-#    Updated: 2022/05/03 17:52:43 by shogura          ###   ########.fr        #
+#    Updated: 2022/05/03 18:13:09 by shogura          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAG= -Wall -Wextra -Werror
 NR=norminette -R CheckForbiddenSourceHeader
 
 SRCS= src/ft_printf.c src/ft_printf_utils.c src/output_utils.c\
-				src/format_scan.c src/print_d_i.c src/print_u.c\
+				    src/format_scan.c src/print_d_i.c src/print_u.c\
 				src/print_xX.c src/print_p.c src/print_s.c\
 				src/print_c_per.c
 

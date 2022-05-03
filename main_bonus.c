@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 18:35:58 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/03 17:32:06 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/03 22:16:46 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,91 @@ int main(void)
 	F("	ret->[%d]\n", U("[20p]->[%20p]", &ad));
 	F("	ret->[%d]\n", U("[-20p]->[%-20p]", &ad));
 	F("	ret->[%d]\n", U("[5p]->[%5p]", &ad));
-	F("-----------------------p-------------------------\n");
-	//error pattern
+	F("-------------------------------------------------\n");
+	// singular pattern
+	char *test;
+	test = malloc(sizeof(char) * INT_MAX);
+	memset(test, '1', INT_MAX);
+	size_t n = INT_MAX;
+	n += 10;
+	char *str;
+	str = malloc(sizeof(char) * (n + 1));
+	memset(str, 'a', n);
+	str[n] = '\0';
+	F("-------------------singular----------------------\n");
+	F("	ret->[%d]\n", F(""));
+	F("	ret->[%d]\n", F("[%0d]", INT_MAX)); //効果なし flag扱い
+	F("	ret->[%d]\n", F("%s", test));//何も表示されない ret -1
+	F("	ret->[%d]\n", F("%*s", INT_MAX, "Hello World")); //何も表示されない ret -1
+	F("	ret->[%d]\n", F("%.*s", INT_MAX, "Hello World")); //通常通り
+	F("	ret->[%d]\n", F("%*c", INT_MAX, 'o'));			  //何も表示されない ret -1
+	F("	ret->[%d]\n", F("%*d", INT_MAX, 42));  //何も表示されない ret -1
+	F("	ret->[%d]\n", F("%.*d", INT_MAX, 42)); //何も表示されない ret -1
+	F("	ret->[%d]\n", F("%*x", INT_MAX, 42));  //何も表示されない ret -1
+	F("	ret->[%d]\n", F("%.*x", INT_MAX, 42)); //何も表示されない ret -1
+	F("	ret->[%d]\n", F("%*X", INT_MAX, 42));  //何も表示されない ret -1
+	F("	ret->[%d]\n", F("%.*X", INT_MAX, 42)); //何も表示されない ret -1
+	F("	ret->[%d]\n", F("%*p", INT_MAX, &test)); //何も表示されない ret -1
+	F("	ret->[%d]\n", F("%s", str)); //%sがINT_MAX超
+	/*
+	F("	ret->[%d]\n", F("%*s", INT_MAX - 1, "Hello World")); //通常通り
+	F("	ret->[%d]\n", F("%.*s", INT_MAX - 1, "Hello World")); //通常通り
+	F("	ret->[%d]\n", F("%*d", INT_MAX - 1, 42));			 //通常通り
+	F("	ret->[%d]\n", F("%.*d", INT_MAX - 1, 42));			 //通常通り
+	F("	ret->[%d]\n", F("%*x", INT_MAX - 1, 42));			 //通常通り
+	F("	ret->[%d]\n", F("%.*x", INT_MAX - 1, 42));			 //通常通り
+	F("	ret->[%d]\n", F("%*X", INT_MAX - 1, 42));			 //通常通り
+	F("	ret->[%d]\n", F("%.*X", INT_MAX - 1, 42));			 //通常通り
+	F("	ret->[%d]\n", F("%*p", INT_MAX - 1, &test));		 //通常通り
+	*/
+	/*
+	F("	ret->[%d]\n", F("%*s", INT_MAX +10, "Hello World"));  //コンパイルエラー
+	F("	ret->[%d]\n", F("%.*s", INT_MAX +10, "Hello World")); //コンパイルエラー
+	F("	ret->[%d]\n", F("%*d", INT_MAX +10, 42));			  //コンパイルエラー
+	F("	ret->[%d]\n", F("%.*d", INT_MAX +10, 42));			  //コンパイルエラー
+	F("	ret->[%d]\n", F("%*x", INT_MAX +10, 42));			  //コンパイルエラー
+	F("	ret->[%d]\n", F("%.*x", INT_MAX +10, 42));			  //コンパイルエラー
+	F("	ret->[%d]\n", F("%*X", INT_MAX +10, 42));			  //コンパイルエラー
+	F("	ret->[%d]\n", F("%.*X", INT_MAX +10, 42));			  //コンパイルエラー
+	F("	ret->[%d]\n", F("%*p", INT_MAX +10, &test));		  //コンパイルエラー
+	*/
+	F("------------------------------[user]\n");
+	F("	ret->[%d]\n", U(""));
+	F("	ret->[%d]\n", U("[%0d]", INT_MAX));				  //効果なし flag扱い
+	F("	ret->[%d]\n", U("%s", test));					  //何も表示されない ret -1
+	F("	ret->[%d]\n", U("%*s", INT_MAX, "Hello World"));  //何も表示されない ret -1
+	F("	ret->[%d]\n", U("%.*s", INT_MAX, "Hello World")); //通常通り
+	F("	ret->[%d]\n", U("%*d", INT_MAX, 42));			  //何も表示されない ret -1
+	F("	ret->[%d]\n", U("%.*d", INT_MAX, 42));			  //何も表示されない ret -1
+	F("	ret->[%d]\n", U("%*x", INT_MAX, 42));			  //何も表示されない ret -1
+	F("	ret->[%d]\n", U("%.*x", INT_MAX, 42));			  //何も表示されない ret -1
+	F("	ret->[%d]\n", U("%*X", INT_MAX, 42));			  //何も表示されない ret -1
+	F("	ret->[%d]\n", U("%.*X", INT_MAX, 42));			  //何も表示されない ret -1
+	F("	ret->[%d]\n", U("%*p", INT_MAX, &test));		  //何も表示されない ret -1
+	F("	ret->[%d]\n", U("%s", str));					  //%sがINT_MAX超
+	/*
+	F("	ret->[%d]\n", F("%.*s", INT_MAX - 1, "Hello World")); //通常通り
+	F("	ret->[%d]\n", F("%*d", INT_MAX - 1, 42));			 //通常通り
+	F("	ret->[%d]\n", F("%.*d", INT_MAX - 1, 42));			 //通常通り
+	F("	ret->[%d]\n", F("%*x", INT_MAX - 1, 42));			 //通常通り
+	F("	ret->[%d]\n", F("%.*x", INT_MAX - 1, 42));			 //通常通り
+	F("	ret->[%d]\n", F("%*X", INT_MAX - 1, 42));			 //通常通り
+	F("	ret->[%d]\n", F("%.*X", INT_MAX - 1, 42));			 //通常通り
+	F("	ret->[%d]\n", F("%*p", INT_MAX - 1, &test));		 //通常通り
+	*/
+	/*
+	F("	ret->[%d]\n", F("%*s", INT_MAX +10, "Hello World"));  //コンパイルエラー
+	F("	ret->[%d]\n", F("%.*s", INT_MAX +10, "Hello World")); //コンパイルエラー
+	F("	ret->[%d]\n", F("%*d", INT_MAX +10, 42));			  //コンパイルエラー
+	F("	ret->[%d]\n", F("%.*d", INT_MAX +10, 42));			  //コンパイルエラー
+	F("	ret->[%d]\n", F("%*x", INT_MAX +10, 42));			  //コンパイルエラー
+	F("	ret->[%d]\n", F("%.*x", INT_MAX +10, 42));			  //コンパイルエラー
+	F("	ret->[%d]\n", F("%*X", INT_MAX +10, 42));			  //コンパイルエラー
+	F("	ret->[%d]\n", F("%.*X", INT_MAX +10, 42));			  //コンパイルエラー
+	F("	ret->[%d]\n", F("%*p", INT_MAX +10, &test));		  //コンパイルエラー
+	*/
+	F("-------------------------------------------------\n");
+	free(test);
+	system("leaks a.out");
+	return (0);
 }

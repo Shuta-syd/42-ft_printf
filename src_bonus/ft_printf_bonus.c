@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 15:07:10 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/03 17:46:31 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/03 21:54:07 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ void	init_status(t_status **status)
 
 int	ft_printf(const char *format, ...)
 {
-	int			ret;
+	long		tmp;
+	long		ret;
 	va_list		ap;
 	t_status	*status;
 
+	tmp = 0;
 	ret = 0;
 	va_start(ap, format);
 	status = (t_status *)malloc(sizeof(t_status));
@@ -38,12 +40,13 @@ int	ft_printf(const char *format, ...)
 	while (*format)
 	{
 		init_status(&status);
-		ret += scan_format(&format, &status, &ap);
-		if (ret == 0)
+		tmp = scan_format(&format, &status, &ap);
+		if (tmp == -1)
 		{
-			while (*format != '%' && *format)
-				ret += ft_putnchar(*format++, 1);
+			free(status);
+			return (-1);
 		}
+		ret += tmp;
 	}
 	free(status);
 	return (ret);
