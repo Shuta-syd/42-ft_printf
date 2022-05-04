@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:56:37 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/03 22:03:48 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/04 20:33:32 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	scan_width(char const **format, t_status **status, va_list *ap)
 		(*status)->width = ft_atoi(*format);
 	else if (**format == '*')
 		(*status)->width = va_arg(*ap, int);
-	while ('0' <= **format && **format <= '9')
+	while (('0' <= **format && **format <= '9') || **format == '*')
 		(*format)++;
 	if ((*status)->width >= INT_MAX)
 		return (-1);
