@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:56:37 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/07 20:05:54 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/07 21:16:31 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ int	scan_width(char const **format, t_status **status, va_list *ap)
 	if ((*status)->width >= INT_MAX || (*status)->width == INT_MIN)
 		return (-1);
 	else if ((*status)->width < 0)
+	{
 		(*status)->width *= -1;
+		(*status)->minus = 1;
+	}
 	return (0);
 }
 

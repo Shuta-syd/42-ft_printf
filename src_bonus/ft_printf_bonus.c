@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 15:07:10 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/07 19:09:55 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/07 21:16:59 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void	init_status(t_status **status)
 	(*status)->width = 0;
 	(*status)->precision = 0;
 	(*status)->ret = 0;
+}
+
+int	error_func(t_status **status)
+{
+	free(*status);
+	return (-1);
 }
 
 int	ft_printf(const char *format, ...)
@@ -42,11 +48,10 @@ int	ft_printf(const char *format, ...)
 		init_status(&status);
 		tmp = scan_format(&format, &status, &ap);
 		if (tmp == -1)
-		{
-			free(status);
-			return (-1);
-		}
+			return (error_func(&status));
 		ret += tmp;
+		if (ret > INT_MAX)
+			return (error_func(&status));
 	}
 	free(status);
 	return (ret);
