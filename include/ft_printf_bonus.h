@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 15:06:56 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/07 19:38:43 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/07 20:28:21 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdlib.h>
-#include <stdio.h>
 typedef struct s_status
 {
 	long	sharp;
