@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 18:35:58 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/07 20:55:21 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/09 19:44:25 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,16 +228,6 @@ int main(void)
 	 F("	ret->[%d]\n", F("%.*s", -1000, "Hello World"));
 	 F("	ret->[%d]\n", F("%.*s", -10000, "Hello World"));
 	 F("	ret->[%d]\n", F("%*.*s", -100, -100, "Hello World"));
-	 char *test1;
-	 char *test2;
-	 char *test3;
-	 test1 = malloc(sizeof(char) * INT_MAX / 2);
-	 test2 = malloc(sizeof(char) * INT_MAX / 2);
-	 test3 = malloc(sizeof(char) * INT_MAX / 2);
-	 memset(test1, '1', INT_MAX / 2);
-	 memset(test2, '1', INT_MAX / 2);
-	 memset(test3, '1', INT_MAX / 2);
-	 F("	ret->[%d]\n", F("%s %s %s", test1, test2, test3));
 	 /*
 	 F("	ret->[%d]\n", F("%*s", INT_MAX - 1, "Hello World")); //通常通り
 	 F("	ret->[%d]\n", F("%.*s", INT_MAX - 1, "Hello World")); //通常通り
@@ -288,7 +278,6 @@ int main(void)
 	 F("	ret->[%d]\n", U("%.*s", -1000, "Hello World"));
 	 F("	ret->[%d]\n", U("%.*s", -10000, "Hello World"));
 	 F("	ret->[%d]\n", U("%*.*s", -100, -100, "Hello World"));
-	 F("	ret->[%d]\n", U("%s %s %s", test1, test2, test3));
 	 /*
 	 F("	ret->[%d]\n", F("%.*s", INT_MAX - 1, "Hello World")); //通常通り
 	 F("	ret->[%d]\n", F("%*d", INT_MAX - 1, 42));			 //通常通り
@@ -311,10 +300,6 @@ int main(void)
 	 F("	ret->[%d]\n", F("%*p", INT_MAX +10, &test));		  //コンパイルエラー
 	 */
 	 F("-------------------------------------------------\n");
-	 free(test);
-	 free(test1);
-	 free(test2);
-	 free(test3);
 	F("----------------------min------------------------\n");
 	// F("	ret->[%d]\n", F("%[*d %x %*X %.*s]", 100, INT_MAX, 1000, 100, 1000, INT_MAX, "Hello World"));
 	F("	ret->[%d]\n", F("[%*d %x %*X %.*s]", 100, INT_MAX, 1000, 100, 1000 ,INT_MAX, "Hello World"));

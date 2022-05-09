@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:56:37 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/07 21:16:31 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/09 19:45:04 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ int	scan_width(char const **format, t_status **status, va_list *ap)
 
 int	scan_precision(char const **format, t_status **status, va_list *ap)
 {
+	int	bool;
+
+	bool = 0;
 	if (**format == '.')
 	{
 		(*format)++;
@@ -58,12 +61,17 @@ int	scan_precision(char const **format, t_status **status, va_list *ap)
 			(*status)->precision = ft_atoi(*format);
 		else if (**format == '*')
 			(*status)->precision = va_arg(*ap, int);
+		else
+		{
+			bool = 1;
+			(*status)->precision = -1;
+		}
 		while (('0' <= **format && **format <= '9') || **format == '*')
 			(*format)++;
 	}
 	if ((*status)->precision >= INT_MAX && **format != 's')
 		return (-1);
-	else if ((*status)->precision < 0)
+	else if ((*status)->precision < 0 && bool == 0)
 		(*status)->precision = 0;
 	return (0);
 }
