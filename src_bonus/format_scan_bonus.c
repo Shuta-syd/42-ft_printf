@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:56:37 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/11 17:01:59 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/11 21:21:04 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,19 +112,16 @@ int	scan_format(const char **format, t_status *status, va_list *ap)
 	{
 		(*format)++;
 		scan_flags(format, &status);
-		error += scan_width(format, &status, ap);
-		error += scan_precision(format, &status, ap);
-		if (error != -1 && error != -2)
-		{
-			ret += scan_types(format, status, ap);
-			return (ret);
-		}
+		if (scan_width(format, &status, ap))
+			return (-1);
+		if (scan_precision(format, &status, ap))
+			return (-1);
+		ret += scan_types(format, status, ap);
 	}
 	else
 	{
 		while (**format != '%' && **format)
 			ret += ft_putnchar(*(*format)++, 1);
-		return (ret);
 	}
-	return (error);
+	return (ret);
 }

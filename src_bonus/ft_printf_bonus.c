@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 15:07:10 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/11 17:09:08 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/11 21:21:21 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_printf(const char *format, ...)
 	{
 		status = (t_status){};
 		tmp = scan_format(&format, &status, &ap);
-		if (tmp == -1 || tmp == -2)
+		if (tmp < 0)
 			return (error_func(&status, &ap));
 		ret += tmp;
 		if (ret > INT_MAX)
