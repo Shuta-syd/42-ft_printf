@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 20:29:39 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/04 20:25:47 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/11 16:46:50 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int	print_d_i(t_status *status, va_list *ap)
 
 	minus_sign = 0;
 	num = va_arg(*ap, int);
+	if (status->precision == -1 && num == 0)
+		return ((int)status->ret);
 	digits = get_digits(num, 10);
 	scan_signs(&status, &num, &minus_sign);
 	status->ret += digits;

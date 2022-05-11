@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 18:35:58 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/09 19:44:25 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/11 17:06:21 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,20 +214,22 @@ int main(void)
 	 F("	ret->[%d]\n", F("%.*X", INT_MAX, 42)); //何も表示されない ret -1
 	 F("	ret->[%d]\n", F("%*p", INT_MAX, &test)); //何も表示されない ret -1
 	 F("	ret->[%d]\n", F("%s", str)); //%sがINT_MAX超
-	 F("	ret->[%d]\n", F("%*d", -100, 42));
-	 F("	ret->[%d]\n", F("%*d", -1000, 42));
-	 F("	ret->[%d]\n", F("%*d", -10000, 42));
-	 F("	ret->[%d]\n", F("%.*d", -100, 42));
-	 F("	ret->[%d]\n", F("%.*d", -1000, 42));
-	 F("	ret->[%d]\n", F("%.*d", -10000, 42));
-	 F("	ret->[%d]\n", F("%*.*d", -100, -100, 42));
-	 F("	ret->[%d]\n", F("%*s", -100, "Hello World"));
-	 F("	ret->[%d]\n", F("%*s", -1000, "Hello World"));
-	 F("	ret->[%d]\n", F("%*s", -10000, "Hello World"));
-	 F("	ret->[%d]\n", F("%.*s", -100, "Hello World"));
-	 F("	ret->[%d]\n", F("%.*s", -1000, "Hello World"));
-	 F("	ret->[%d]\n", F("%.*s", -10000, "Hello World"));
-	 F("	ret->[%d]\n", F("%*.*s", -100, -100, "Hello World"));
+	 F("	ret->[%d]\n", F("%.d", 0));
+	 F("	ret->[%d]\n", F("%.18446744073709551615d", 0));
+	 // F("	ret->[%d]\n", F("%*d", -100, 42));
+	 // F("	ret->[%d]\n", F("%*d", -1000, 42));
+	 // F("	ret->[%d]\n", F("%*d", -10000, 42));
+	 // F("	ret->[%d]\n", F("%.*d", -100, 42));
+	 // F("	ret->[%d]\n", F("%.*d", -1000, 42));
+	 // F("	ret->[%d]\n", F("%.*d", -10000, 42));
+	 // F("	ret->[%d]\n", F("%*.*d", -100, -100, 42));
+	 // F("	ret->[%d]\n", F("%*s", -100, "Hello World"));
+	 // F("	ret->[%d]\n", F("%*s", -1000, "Hello World"));
+	 // F("	ret->[%d]\n", F("%*s", -10000, "Hello World"));
+	 // F("	ret->[%d]\n", F("%.*s", -100, "Hello World"));
+	 // F("	ret->[%d]\n", F("%.*s", -1000, "Hello World"));
+	 // F("	ret->[%d]\n", F("%.*s", -10000, "Hello World"));
+	 // F("	ret->[%d]\n", F("%*.*s", -100, -100, "Hello World"));
 	 /*
 	 F("	ret->[%d]\n", F("%*s", INT_MAX - 1, "Hello World")); //通常通り
 	 F("	ret->[%d]\n", F("%.*s", INT_MAX - 1, "Hello World")); //通常通り
@@ -264,20 +266,22 @@ int main(void)
 	 F("	ret->[%d]\n", U("%.*X", INT_MAX, 42));			  //何も表示されない ret -1
 	 F("	ret->[%d]\n", U("%*p", INT_MAX, &test));		  //何も表示されない ret -1
 	 F("	ret->[%d]\n", U("%s", str));					  //%sがINT_MAX超
-	 F("	ret->[%d]\n", U("%*d", -100, 42));
-	 F("	ret->[%d]\n", U("%*d", -1000, 42));
-	 F("	ret->[%d]\n", U("%*d", -10000, 42));
-	 F("	ret->[%d]\n", U("%.*d", -100, 42));
-	 F("	ret->[%d]\n", U("%.*d", -1000, 42));
-	 F("	ret->[%d]\n", U("%.*d", -10000, 42));
-	 F("	ret->[%d]\n", U("%*.*d", -100, -100, 42));
-	 F("	ret->[%d]\n", U("%*s", -100, "Hello World"));
-	 F("	ret->[%d]\n", U("%*s", -1000, "Hello World"));
-	 F("	ret->[%d]\n", U("%*s", -10000, "Hello World"));
-	 F("	ret->[%d]\n", U("%.*s", -100, "Hello World"));
-	 F("	ret->[%d]\n", U("%.*s", -1000, "Hello World"));
-	 F("	ret->[%d]\n", U("%.*s", -10000, "Hello World"));
-	 F("	ret->[%d]\n", U("%*.*s", -100, -100, "Hello World"));
+	 F("	ret->[%d]\n", U("%.d", 0));
+	 F("	ret->[%d]\n", U("%.18446744073709551615d", 0));
+	 // F("	ret->[%d]\n", U("%*d", -100, 42));
+	 // F("	ret->[%d]\n", U("%*d", -1000, 42));
+	 // F("	ret->[%d]\n", U("%*d", -10000, 42));
+	 // F("	ret->[%d]\n", U("%.*d", -100, 42));
+	 // F("	ret->[%d]\n", U("%.*d", -1000, 42));
+	 // F("	ret->[%d]\n", U("%.*d", -10000, 42));
+	 // F("	ret->[%d]\n", U("%*.*d", -100, -100, 42));
+	 // F("	ret->[%d]\n", U("%*s", -100, "Hello World"));
+	 // F("	ret->[%d]\n", U("%*s", -1000, "Hello World"));
+	 // F("	ret->[%d]\n", U("%*s", -10000, "Hello World"));
+	 // F("	ret->[%d]\n", U("%.*s", -100, "Hello World"));
+	 // F("	ret->[%d]\n", U("%.*s", -1000, "Hello World"));
+	 // F("	ret->[%d]\n", U("%.*s", -10000, "Hello World"));
+	 // F("	ret->[%d]\n", U("%*.*s", -100, -100, "Hello World"));
 	 /*
 	 F("	ret->[%d]\n", F("%.*s", INT_MAX - 1, "Hello World")); //通常通り
 	 F("	ret->[%d]\n", F("%*d", INT_MAX - 1, 42));			 //通常通り
@@ -289,6 +293,7 @@ int main(void)
 	 F("	ret->[%d]\n", F("%*p", INT_MAX - 1, &test));		 //通常通り
 	 */
 	 /*
+	 F("	ret->[%d]\n", F("%739287983275982734598723957s", "Hello World")); //コンパイルエラー
 	 F("	ret->[%d]\n", F("%*s", INT_MAX +10, "Hello World"));  //コンパイルエラー
 	 F("	ret->[%d]\n", F("%.*s", INT_MAX +10, "Hello World")); //コンパイルエラー
 	 F("	ret->[%d]\n", F("%*d", INT_MAX +10, 42));			  //コンパイルエラー
@@ -309,3 +314,6 @@ int main(void)
 	system("leaks a.out");
 	return (0);
 }
+
+//-1534040566
+//-2147483648

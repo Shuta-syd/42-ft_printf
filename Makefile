@@ -6,7 +6,7 @@
 #    By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 18:43:16 by shogura           #+#    #+#              #
-#    Updated: 2022/05/04 19:29:36 by shogura          ###   ########.fr        #
+#    Updated: 2022/05/11 17:02:15 by shogura          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME=libftprintf.a
 
 CC=cc
 
-CFLAG= -Wall -Wextra -Werror
+CFLAG= #-Wall -Wextra -Werror
 
 NR=norminette -R CheckForbiddenSourceHeader
 

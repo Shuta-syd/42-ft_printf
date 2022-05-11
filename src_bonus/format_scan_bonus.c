@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:56:37 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/09 19:45:04 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/11 17:01:59 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int	scan_width(char const **format, t_status **status, va_list *ap)
 
 int	scan_precision(char const **format, t_status **status, va_list *ap)
 {
-	int	bool;
+	bool	i;
 
-	bool = 0;
+	i = 0;
 	if (**format == '.')
 	{
 		(*format)++;
@@ -63,7 +63,7 @@ int	scan_precision(char const **format, t_status **status, va_list *ap)
 			(*status)->precision = va_arg(*ap, int);
 		else
 		{
-			bool = 1;
+			i = 1;
 			(*status)->precision = -1;
 		}
 		while (('0' <= **format && **format <= '9') || **format == '*')
@@ -71,7 +71,7 @@ int	scan_precision(char const **format, t_status **status, va_list *ap)
 	}
 	if ((*status)->precision >= INT_MAX && **format != 's')
 		return (-1);
-	else if ((*status)->precision < 0 && bool == 0)
+	else if ((*status)->precision < 0 && i == 0)
 		(*status)->precision = 0;
 	return (0);
 }
@@ -101,7 +101,7 @@ int	scan_types(char const **format, t_status *status, va_list *ap)
 	return (ret);
 }
 
-int	scan_format(const char **format, t_status **status, va_list *ap)
+int	scan_format(const char **format, t_status *status, va_list *ap)
 {
 	int	error;
 	int	ret;
@@ -111,12 +111,12 @@ int	scan_format(const char **format, t_status **status, va_list *ap)
 	if (**format == '%')
 	{
 		(*format)++;
-		scan_flags(format, status);
-		error += scan_width(format, status, ap);
-		error += scan_precision(format, status, ap);
+		scan_flags(format, &status);
+		error += scan_width(format, &status, ap);
+		error += scan_precision(format, &status, ap);
 		if (error != -1 && error != -2)
 		{
-			ret += scan_types(format, *status, ap);
+			ret += scan_types(format, status, ap);
 			return (ret);
 		}
 	}

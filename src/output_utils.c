@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:24:50 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/03 17:45:49 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/11 16:52:20 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,7 @@ void	ft_putnbr_base(size_t n, size_t base, char *base_s)
 		ft_putnbr_base(n / base, base, base_s);
 		ft_putnchar(base_s[n % base], 1);
 	}
-	else if (10 <= n && n <= 15)
-		ft_putnchar(base_s[n], 1);
-	else if (0 <= n && n <= 9)
+	else if (0 <= n && n <= 15)
 		ft_putnchar(base_s[n], 1);
 	return ;
 }
