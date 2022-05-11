@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 15:06:56 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/06 17:51:36 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/11 17:03:57 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
 # include <inttypes.h>
 # include <stdarg.h>
 # include <unistd.h>
 # include <limits.h>
 # include <stdlib.h>
+# include <stdbool.h>
 typedef struct s_status
 {
-	long	sharp;
-	long	plus;
-	long	minus;
-	long	zero;
-	long	space;
-	long	width;
-	long	precision;
-	long	ret;
+	long long	sharp;
+	long long	plus;
+	long long	minus;
+	long long	zero;
+	long long	space;
+	long long	width;
+	long long	precision;
+	long long	ret;
 }	t_status;
 
 size_t	ft_strlen(const char *s);
@@ -39,7 +40,7 @@ int		ft_putnchar(int ch, int len);
 int		ft_putnstr(char const *s, int n);
 void	ft_putnbr(int n);
 void	ft_putnbr_base(size_t n, size_t base, char *base_s);
-int		scan_format(const char **format, t_status **status, va_list *ap);
+int		scan_format(const char **format, t_status *status, va_list *ap);
 int		print_d_i(t_status *status, va_list *ap);
 int		print_u(t_status *status, va_list *ap);
 int		print_s(t_status *status, va_list *ap);
