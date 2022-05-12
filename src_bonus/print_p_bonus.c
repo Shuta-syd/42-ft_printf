@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:43:46 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/12 23:51:47 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/13 00:27:22 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	print_p(t_status *status, va_list *ap)
 	uintptr_t	address;
 
 	address = va_arg(*ap, uintptr_t);
-	status->ret += get_digits(address, 16);
-	status->width -= get_digits(address, 16) + 2;
+	status->ret += get_digits_ul(address, 16);
+	status->width -= get_digits_ul(address, 16) + 2;
 	if (status->minus)
 	{
 		status->ret += ft_putstr("0x");

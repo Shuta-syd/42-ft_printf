@@ -6,7 +6,7 @@
 #    By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 18:43:16 by shogura           #+#    #+#              #
-#    Updated: 2022/05/11 20:20:41 by shogura          ###   ########.fr        #
+#    Updated: 2022/05/13 00:48:38 by shogura          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME=libftprintf.a
 
 CC=cc
 
-CFLAG= #-Wall -Wextra -Werror
+CFLAGS =	-Wall -Werror -Wextra
 
 NR=norminette -R CheckForbiddenSourceHeader
 
@@ -44,7 +44,7 @@ ${NAME}:${OBJS}
 	ar -rc $(NAME) ${OBJS}
 
 .o:.c
-	${CC} ${CFLAGS} -c $< $@ -I ${HEADER}
+	${CC} ${CFLAG} $^ $@ -I ${HEADER}
 
 xx:${SRCS}
 	${CC} ${CFLAG} $^ main.c
