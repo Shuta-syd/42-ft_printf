@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 15:07:10 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/11 21:21:21 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/12 23:55:02 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf_bonus.h"
+#include "../include/ft_printf.h"
 
 int	error_func(t_status *status, va_list *ap)
 {

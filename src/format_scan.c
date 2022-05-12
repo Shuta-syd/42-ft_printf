@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_scan_bonus.c                                :+:      :+:    :+:   */
+/*   format_scan.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:56:37 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/11 21:21:04 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/12 23:54:40 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf_bonus.h"
+#include "../include/ft_printf.h"
 
 void	scan_flags(char const **format, t_status **status)
 {

@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:43:46 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/11 16:56:50 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/12 23:56:14 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	print_x(t_status *status, va_list *ap)
 	unsigned int	num;
 
 	num = va_arg(*ap, unsigned int);
-	digits = get_digits_ul(num, 16);
+	digits = get_digits(num, 16);
 	status->ret += digits;
 	if (status->precision > digits && num != 0)
 		status->width -= status->precision;
@@ -100,7 +100,7 @@ int	print_X(t_status *status, va_list *ap)
 	unsigned int	num;
 
 	num = va_arg(*ap, unsigned int);
-	digits = get_digits_ul(num, 16);
+	digits = get_digits(num, 16);
 	status->ret += digits;
 	if (digits > status->precision)
 		status->width -= digits;

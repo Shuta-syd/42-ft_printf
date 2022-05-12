@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_u_bonus.c                                    :+:      :+:    :+:   */
+/*   print_u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:42:03 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/03 16:22:27 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/12 23:55:19 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf_bonus.h"
+#include "../include/ft_printf.h"
 
 static void	print_is_precision(t_status **status, unsigned int num, int digits)
 {
@@ -53,7 +53,7 @@ int	print_u(t_status *status, va_list *ap)
 	unsigned int	num;
 
 	num = va_arg(*ap, unsigned int);
-	digits = get_digits_ul(num, 10);
+	digits = get_digits(num, 10);
 	status->ret += digits;
 	if (digits > status->precision)
 		status->width -= digits;

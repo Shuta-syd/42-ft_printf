@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   output_utils_bonus.c                               :+:      :+:    :+:   */
+/*   output_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:24:50 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/11 16:52:20 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/12 23:55:07 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf_bonus.h"
+#include "../include/ft_printf.h"
 
 int	ft_putnchar(int ch, int len)
 {

@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 15:06:56 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/11 17:03:57 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/12 23:51:34 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ typedef struct s_status
 	long long	ret;
 }	t_status;
 
-size_t	ft_strlen(const char *s);
-int		get_digits(long num, int base);
-int		get_digits_ul(size_t num, int base);
+size_t	ft_strlen(const char *s);;
+int		get_digits(size_t num, int base);
 int		ft_atoi(const char *str);
 int		ft_printf(const char *format, ...);
 int		ft_putstr(char const *s);

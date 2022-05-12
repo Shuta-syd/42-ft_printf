@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_d_i_bonus.c                                  :+:      :+:    :+:   */
+/*   print_d_i.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 20:29:39 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/11 16:46:50 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/12 23:55:12 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf_bonus.h"
+#include "../include/ft_printf.h"
 
 static void	scan_signs(t_status **status, int *num, int *minus_sign)
 {
@@ -86,8 +86,8 @@ int	print_d_i(t_status *status, va_list *ap)
 	num = va_arg(*ap, int);
 	if (status->precision == -1 && num == 0)
 		return ((int)status->ret);
-	digits = get_digits(num, 10);
 	scan_signs(&status, &num, &minus_sign);
+	digits = get_digits(num, 10);
 	status->ret += digits;
 	if (digits > status->precision)
 		status->width -= digits;

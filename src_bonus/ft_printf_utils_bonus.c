@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 17:31:25 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/11 17:03:48 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/12 23:51:21 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,7 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-int	get_digits(long num, int base)
-{
-	int	digits;
-
-	digits = 1;
-	while (num / base != 0)
-	{
-		num /= base;
-		digits++;
-	}
-	return (digits);
-}
-
-int	get_digits_ul(size_t num, int base)
+int	get_digits(size_t num, int base)
 {
 	int	digits;
 
@@ -75,7 +62,7 @@ int	ft_atoi(const char *str)
 	while ('0' <= str[i] && str[i] <= '9')
 	{
 		num = 10 * num + (str[i] - '0');
-		if (num < 0)
+		if (num > LONG_MAX / 10)
 			return (ft_overflow(minus));
 		i++;
 	}
