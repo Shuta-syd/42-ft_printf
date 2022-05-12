@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 18:35:58 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/11 17:06:21 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/12 11:54:28 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,8 +203,8 @@ int main(void)
 	 F("	ret->[%d]\n", F(""));
 	 F("	ret->[%d]\n", F("[%0d]", INT_MAX)); //効果なし flag扱い
 	 F("	ret->[%d]\n", F("%s", test));//何も表示されない ret -1
-	 F("	ret->[%d]\n", F("%*s", INT_MAX, "Hello World")); //何も表示されない ret -1
-	 F("	ret->[%d]\n", F("%.*s", INT_MAX, "Hello World")); //通常通り
+	 F("	ret->[%d]\n", U("[[[%*s]]]", INT_MAX, "Hello World"));		 //何も表示されない ret -1
+	 F("	ret->[%d]\n", U("[[[[%.*s]]]]]", INT_MAX, "Hello World")); //通常通り
 	 F("	ret->[%d]\n", F("%*c", INT_MAX, 'o'));			  //何も表示されない ret -1
 	 F("	ret->[%d]\n", F("%*d", INT_MAX, 42));  //何も表示されない ret -1
 	 F("	ret->[%d]\n", F("%.*d", INT_MAX, 42)); //何も表示されない ret -1
@@ -256,8 +256,8 @@ int main(void)
 	 F("	ret->[%d]\n", U(""));
 	 F("	ret->[%d]\n", U("[%0d]", INT_MAX));				  //効果なし flag扱い
 	 F("	ret->[%d]\n", U("%s", test));					  //何も表示されない ret -1
-	 F("	ret->[%d]\n", U("%*s", INT_MAX, "Hello World"));  //何も表示されない ret -1
-	 F("	ret->[%d]\n", U("%.*s", INT_MAX, "Hello World")); //通常通り
+	 F("	ret->[%d]\n", U("[[[%*s]]]", INT_MAX, "Hello World"));  //何も表示されない ret -1
+	 F("	ret->[%d]\n", U("[[[[%.*s]]]]]", INT_MAX, "Hello World")); //通常通り
 	 F("	ret->[%d]\n", U("%*d", INT_MAX, 42));			  //何も表示されない ret -1
 	 F("	ret->[%d]\n", U("%.*d", INT_MAX, 42));			  //何も表示されない ret -1
 	 F("	ret->[%d]\n", U("%*x", INT_MAX, 42));			  //何も表示されない ret -1

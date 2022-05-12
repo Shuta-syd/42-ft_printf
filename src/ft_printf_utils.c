@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils_bonus.c                            :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 17:31:25 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/11 17:03:48 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/12 11:46:40 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	ft_atoi(const char *str)
 	while ('0' <= str[i] && str[i] <= '9')
 	{
 		num = 10 * num + (str[i] - '0');
-		if (num < 0)
+		if (num > LLONG_MAX / num)
 			return (ft_overflow(minus));
 		i++;
 	}
