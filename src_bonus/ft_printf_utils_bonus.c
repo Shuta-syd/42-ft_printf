@@ -6,12 +6,12 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 17:31:25 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/13 20:51:52 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/13 23:06:11 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf_bonus.h"
-#include <stdio.h>
+
 size_t	ft_strlen(const char *s)
 {
 	size_t	len;
