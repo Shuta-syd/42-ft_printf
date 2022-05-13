@@ -6,7 +6,7 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 15:07:10 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/11 21:21:21 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/13 20:53:01 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ int	ft_printf(const char *format, ...)
 		if (tmp < 0)
 			return (error_func(&status, &ap));
 		ret += tmp;
-		if (ret > INT_MAX)
-			return (error_func(&status, &ap));
 	}
 	va_end(ap);
 	return (ret);

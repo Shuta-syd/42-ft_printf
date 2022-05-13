@@ -6,7 +6,7 @@
 #    By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 18:43:16 by shogura           #+#    #+#              #
-#    Updated: 2022/05/13 00:48:38 by shogura          ###   ########.fr        #
+#    Updated: 2022/05/13 20:16:11 by shogura          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,13 +44,13 @@ ${NAME}:${OBJS}
 	ar -rc $(NAME) ${OBJS}
 
 .o:.c
-	${CC} ${CFLAG} $^ $@ -I ${HEADER}
+	${CC} ${CFLAGS} $^ $@ -I ${HEADER}
 
 xx:${SRCS}
-	${CC} ${CFLAG} $^ main.c
+	${CC} ${CFLAGS} $^ main.c
 
 bx:${SRCS_B}
-	${CC} ${CFLAG} $^ main_bonus.c
+	${CC} ${CFLAGS} $^ main_bonus.c
 
 bonus:
 	@make BONUS_FLAG=1 all

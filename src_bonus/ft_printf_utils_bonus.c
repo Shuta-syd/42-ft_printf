@@ -6,12 +6,12 @@
 /*   By: shogura <shogura@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 17:31:25 by shogura           #+#    #+#             */
-/*   Updated: 2022/05/13 01:02:27 by shogura          ###   ########.fr       */
+/*   Updated: 2022/05/13 20:51:52 by shogura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf_bonus.h"
-
+#include <stdio.h>
 size_t	ft_strlen(const char *s)
 {
 	size_t	len;
@@ -74,9 +74,13 @@ int	ft_atoi(const char *str)
 	}
 	while ('0' <= str[i] && str[i] <= '9')
 	{
-		num = 10 * num + (str[i] - '0');
-		if (num > LONG_MAX / 10)
+		if (num > LONG_MAX / 10 || (num == (LONG_MAX / 10)
+				&& str[i] - '0' > (LONG_MAX % 10)))
+		{
+			printf("pass");
 			return (ft_overflow(minus));
+				}
+		num = 10 * num + (str[i] - '0');
 		i++;
 	}
 	return ((int)num * minus);
